@@ -1,0 +1,148 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Marcom Lunch Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- Password Protection Modal -->
+    <div id="loginModal" class="login-modal">
+      <div class="login-content">
+        <h2>Please Enter Password</h2>
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <button id="loginBtn" class="submit-btn">Login</button>
+        <p id="loginError" style="display: none; color: red;">
+          Incorrect password. Please try again.
+        </p>
+      </div>
+    </div>
+
+    <!-- Randomized Restaurant Modal -->
+    <div id="randomizedModal" class="login-modal">
+      <div class="randomized-content">
+        <span class="close-button">&times;</span>
+        <h2>Lunch Recommendation</h2>
+        <h3 id="modalRestaurantName">Restaurant Name</h3>
+        <p id="modalRestaurantCuisine">Cuisine</p>
+        <p>
+          <a id="modalRestaurantLink" href="#" target="_blank" rel="noopener noreferrer">View on Map</a>
+        </p>
+      </div>
+    </div>
+
+    <header>
+      <h1>Marcom Lunch Tracker</h1>
+    </header>
+
+    <section class="form-section">
+      <form id="lunchForm">
+        <div class="form-group">
+          <label for="restaurant">Restaurant</label>
+          <input
+            type="text"
+            id="restaurant"
+            name="restaurant"
+            placeholder="Enter restaurant name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="mapsLink">Google Maps Link</label>
+          <input
+            type="url"
+            id="mapsLink"
+            name="mapsLink"
+            placeholder="Enter Google Maps URL"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="cuisine">Cuisine (type and press Tab, or select from tags - up to 2)</label>
+          <input
+            type="text"
+            id="cuisine"
+            name="cuisine"
+            placeholder="Enter cuisine type and press Tab, or select from tags below"
+            required
+          />
+          <div id="cuisineTags" class="cuisine-tags-container">
+            <!-- Cuisine tags will be dynamically added here -->
+          </div>
+        </div>
+        <div class="form-group price-range-group">
+          <label for="priceRange">Price Range (optional)</label>
+          <select id="priceRange" name="priceRange" class="price-range-select">
+            <option value="">Select price range</option>
+            <option value="1">$ (Inexpensive)</option>
+            <option value="2">$$ (Moderate)</option>
+            <option value="3">$$$ (Expensive)</option>
+            <option value="4">$$$$ (Very Expensive)</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Add Entry
+        </button>
+      </form>
+    </section>
+
+    <section class="randomizer-section">
+      <h2>Randomize Lunch</h2>
+      <button id="randomizeBtn" class="submit-btn">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="23 4 23 10 17 10"></polyline>
+          <polyline points="1 20 1 14 7 14"></polyline>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"></path>
+          <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"></path>
+        </svg>
+        Randomize Lunch
+      </button>
+      <button id="resetRandomizerBtn" class="submit-btn" style="margin-top: 1em;">
+        Reset Randomizer
+      </button>
+      <div id="randomizerResult"></div>
+    </section>
+
+    <section class="tracker-section">
+      <h2>Team Lunch Entries</h2>
+      <div class="cuisine-filter">
+        <label for="cuisineFilter">Filter by Cuisine:</label>
+        <select id="cuisineFilter" class="cuisine-select">
+          <option value="">All Cuisines</option>
+          <!-- Options will be added dynamically -->
+        </select>
+      </div>
+      <ul id="lunchList">
+        <!-- Lunch entries will be added here -->
+      </ul>
+      <div id="paginationControls" class="pagination-controls">
+        <!-- Pagination controls will be added here -->
+      </div>
+    </section>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
